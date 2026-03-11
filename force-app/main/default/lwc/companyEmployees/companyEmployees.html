@@ -5,86 +5,208 @@
             <div class="description">Employee list</div>
         </div>
 
-        <div class="company-section">
-            <div class="company-section__header">
-                <div class="company-section__title">Company</div>
-                <div class="company-section__description">
-                    Base company block for State A / State B.
-                </div>
-            </div>
+        <template lwc:if={isAddEmployeeOpen}>
+            <div class="employee-form">
+                <div class="employee-form__grid">
+                    <div class="employee-form__field">
+                        <div class="employee-form__label">Full name</div>
+                        <input
+                            class="employee-form__input"
+                            type="text"
+                            name="fullName"
+                            value={employeeForm.fullName}
+                            oninput={handleEmployeeFieldChange}
+                        />
+                    </div>
 
-            <div class="company-grid">
-                <div class="company-field">
-                    <div class="company-field__label">Company name</div>
-                    <div class="company-field__value">Acme Corporation</div>
-                </div>
+                    <div class="employee-form__field">
+                        <div class="employee-form__label">Email</div>
+                        <input
+                            class="employee-form__input"
+                            type="email"
+                            name="email"
+                            value={employeeForm.email}
+                            oninput={handleEmployeeFieldChange}
+                        />
+                    </div>
 
-                <div class="company-field">
-                    <div class="company-field__label">Industry</div>
-                    <div class="company-field__value">Technology</div>
-                </div>
+                    <div class="employee-form__field">
+                        <div class="employee-form__label">Role Title</div>
+                        <input
+                            class="employee-form__input"
+                            type="text"
+                            name="roleTitle"
+                            value={employeeForm.roleTitle}
+                            oninput={handleEmployeeFieldChange}
+                        />
+                    </div>
 
-                <div class="company-field">
-                    <div class="company-field__label">HQ / Location</div>
-                    <div class="company-field__value">Warsaw, Poland</div>
-                </div>
+                    <div class="employee-form__field">
+                        <div class="employee-form__label">Department</div>
+                        <input
+                            class="employee-form__input"
+                            type="text"
+                            name="department"
+                            value={employeeForm.department}
+                            oninput={handleEmployeeFieldChange}
+                        />
+                    </div>
 
-                <div class="company-field">
-                    <div class="company-field__label">Employee count</div>
-                    <div class="company-field__value">24</div>
-                </div>
+                    <div class="employee-form__field">
+                        <div class="employee-form__label">Start Date</div>
+                        <input
+                            class="employee-form__input"
+                            type="date"
+                            name="startDate"
+                            value={employeeForm.startDate}
+                            oninput={handleEmployeeFieldChange}
+                        />
+                    </div>
 
-                <div class="company-field">
-                    <div class="company-field__label">Website</div>
-                    <div class="company-field__value">www.acme.com</div>
-                </div>
+                    <div class="employee-form__field">
+                        <div class="employee-form__label">Phone</div>
+                        <input
+                            class="employee-form__input"
+                            type="text"
+                            name="phone"
+                            value={employeeForm.phone}
+                            oninput={handleEmployeeFieldChange}
+                        />
+                    </div>
 
-                <div class="company-field">
-                    <div class="company-field__label">Tax ID / VAT ID</div>
-                    <div class="company-field__value">PL1234567890</div>
-                </div>
+                    <div class="employee-form__field">
+                        <div class="employee-form__label">Status</div>
+                        <input
+                            class="employee-form__input"
+                            type="text"
+                            name="status"
+                            value={employeeForm.status}
+                            oninput={handleEmployeeFieldChange}
+                        />
+                    </div>
 
-                <div class="company-field">
-                    <div class="company-field__label">Account manager</div>
-                    <div class="company-field__value">Jane Smith</div>
-                </div>
-
-                <div class="company-field">
-                    <div class="company-field__label">Company phone</div>
-                    <div class="company-field__value">+48 123 456 789</div>
-                </div>
-
-                <div class="company-field">
-                    <div class="company-field__label">Billing address</div>
-                    <div class="company-field__value">
-                        10 Main Street, Warsaw, 00-001, Poland
+                    <div class="employee-form__field employee-form__field--full">
+                        <div class="employee-form__label">Notes</div>
+                        <textarea
+                            class="employee-form__input employee-form__textarea"
+                            name="notes"
+                            oninput={handleEmployeeFieldChange}
+                        >{employeeForm.notes}</textarea>
                     </div>
                 </div>
 
-                <div class="company-field">
-                    <div class="company-field__label">Shipping address</div>
-                    <div class="company-field__value">
-                        10 Main Street, Warsaw, 00-001, Poland
+                <div class="employee-form__actions">
+                    <div
+                        class="employee-form__button employee-form__button--ghost"
+                        onclick={handleCloseAddEmployee}
+                    >
+                        Cancel
+                    </div>
+                    <div class="employee-form__button" onclick={handleAddEmployee}>
+                        Save
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <template lwc:if={hasEmployees}>
-            <div class="list">
-                <template for:each={employees} for:item="employee">
-                    <div key={employee.id} class="card">
-                        <div class="employee-name">{employee.name}</div>
-                        <div class="employee-position">{employee.position}</div>
-                    </div>
-                </template>
             </div>
         </template>
 
         <template lwc:else>
-            <div class="empty-state">
-                <div class="empty-state-message">Empty list</div>
+            <div class="company-section">
+                <div class="company-section__header">
+                    <div class="company-section__title">Company</div>
+                    <div class="company-section__description">
+                        Base company block for State A / State B.
+                    </div>
+                </div>
+
+                <div class="company-grid">
+                    <div class="company-field">
+                        <div class="company-field__label">Company name</div>
+                        <div class="company-field__value">Acme Corporation</div>
+                    </div>
+
+                    <div class="company-field">
+                        <div class="company-field__label">Industry</div>
+                        <div class="company-field__value">Technology</div>
+                    </div>
+
+                    <div class="company-field">
+                        <div class="company-field__label">HQ / Location</div>
+                        <div class="company-field__value">Warsaw, Poland</div>
+                    </div>
+
+                    <div class="company-field">
+                        <div class="company-field__label">Employee count</div>
+                        <div class="company-field__value">{employeeCount}</div>
+                    </div>
+
+                    <div class="company-field">
+                        <div class="company-field__label">Website</div>
+                        <div class="company-field__value">www.acme.com</div>
+                    </div>
+
+                    <div class="company-field">
+                        <div class="company-field__label">Tax ID / VAT ID</div>
+                        <div class="company-field__value">PL1234567890</div>
+                    </div>
+
+                    <div class="company-field">
+                        <div class="company-field__label">Account manager</div>
+                        <div class="company-field__value">Jane Smith</div>
+                    </div>
+
+                    <div class="company-field">
+                        <div class="company-field__label">Company phone</div>
+                        <div class="company-field__value">+48 123 456 789</div>
+                    </div>
+
+                    <div class="company-field">
+                        <div class="company-field__label">Billing address</div>
+                        <div class="company-field__value">
+                            10 Main Street, Warsaw, 00-001, Poland
+                        </div>
+                    </div>
+
+                    <div class="company-field">
+                        <div class="company-field__label">Shipping address</div>
+                        <div class="company-field__value">
+                            10 Main Street, Warsaw, 00-001, Poland
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <div class="employees-toolbar">
+                <div class="employees-toolbar__title">Employees</div>
+                <div class="employees-toolbar__button" onclick={handleOpenAddEmployee}>
+                    Add employee
+                </div>
+            </div>
+
+            <template lwc:if={hasEmployees}>
+                <div class="list">
+                    <template for:each={employees} for:item="employee">
+                        <div key={employee.id} class="card">
+                            <div class="employee-name">{employee.fullName}</div>
+                            <div class="employee-position">{employee.roleTitle}</div>
+                            <div class="employee-meta">{employee.department}</div>
+                            <div class="employee-meta">{employee.email}</div>
+                            <div class="employee-meta">{employee.phone}</div>
+                            <div class="employee-meta">
+                                {employee.status} • {employee.startDate}
+                            </div>
+                            <template lwc:if={employee.notes}>
+                                <div class="employee-notes">{employee.notes}</div>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+            </template>
+
+            <template lwc:else>
+                <div class="empty-state">
+                    <div class="empty-state-message">No employees yet</div>
+                </div>
+            </template>
         </template>
     </div>
 </template>
