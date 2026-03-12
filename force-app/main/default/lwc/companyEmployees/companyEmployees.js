@@ -1,7 +1,46 @@
 import { api, LightningElement } from 'lwc';
 
 export default class CompanyEmployees extends LightningElement {
+    // VARIABLES
     @api heading = null;
+    @api description = null;
+
+    @api companySectionTitle = null;
+    @api companySectionDescription = null;
+    @api companyNameLabel = null;
+    @api companyNameValue = null;
+    @api industryLabel = null;
+    @api industryValue = null;
+    @api hqLocationLabel = null;
+    @api hqLocationValue = null;
+    @api employeeCountLabel = null;
+    @api websiteLabel = null;
+    @api websiteValue = null;
+    @api taxIdLabel = null;
+    @api taxIdValue = null;
+    @api accountManagerLabel = null;
+    @api accountManagerValue = null;
+    @api companyPhoneLabel = null;
+    @api companyPhoneValue = null;
+    @api billingAddressLabel = null;
+    @api billingAddressValue = null;
+    @api shippingAddressLabel = null;
+    @api shippingAddressValue = null;
+
+    @api employeesSectionTitle = null;
+    @api addEmployeeButtonLabel = null;
+    @api emptyStateTitle = null;
+
+    @api cancelButtonLabel = null;
+    @api saveButtonLabel = null;
+    @api fullNameLabel = null;
+    @api emailLabel = null;
+    @api roleTitleLabel = null;
+    @api departmentLabel = null;
+    @api startDateLabel = null;
+    @api phoneLabel = null;
+    @api statusLabel = null;
+    @api notesLabel = null;
 
     employees = [];
     isAddEmployeeOpen = false;
@@ -16,6 +55,7 @@ export default class CompanyEmployees extends LightningElement {
         notes: ''
     };
 
+    // GETTERS
     get employeeCount() {
         return this.employees.length;
     }
@@ -24,12 +64,10 @@ export default class CompanyEmployees extends LightningElement {
         return this.employees.length > 0;
     }
 
-    handleOpenAddEmployee() {
-        this.isAddEmployeeOpen = true;
-    }
+    // LIFECYCLES
 
-    handleCloseAddEmployee() {
-        this.isAddEmployeeOpen = false;
+    // INIT METHODS
+    resetEmployeeForm() {
         this.employeeForm = {
             fullName: '',
             email: '',
@@ -42,6 +80,16 @@ export default class CompanyEmployees extends LightningElement {
         };
     }
 
+    // HANDLERS
+    handleOpenAddEmployee() {
+        this.isAddEmployeeOpen = true;
+    }
+
+    handleCloseAddEmployee() {
+        this.isAddEmployeeOpen = false;
+        this.resetEmployeeForm();
+    }
+
     handleEmployeeFieldChange(event) {
         const { name, value } = event.target;
 
@@ -52,6 +100,18 @@ export default class CompanyEmployees extends LightningElement {
     }
 
     handleAddEmployee() {
+        const employee = this.buildEmployee();
+
+        if (!employee) {
+            return;
+        }
+
+        this.employees = [...this.employees, employee];
+        this.handleCloseAddEmployee();
+    }
+
+    // MAIN METHODS
+    buildEmployee() {
         const fullName = this.employeeForm.fullName.trim();
         const email = this.employeeForm.email.trim();
         const roleTitle = this.employeeForm.roleTitle.trim();
@@ -62,24 +122,19 @@ export default class CompanyEmployees extends LightningElement {
         const notes = this.employeeForm.notes.trim();
 
         if (!fullName || !email || !roleTitle || !department || !startDate || !phone || !status) {
-            return;
+            return null;
         }
 
-        this.employees = [
-            ...this.employees,
-            {
-                id: `${Date.now()}`,
-                fullName,
-                email,
-                roleTitle,
-                department,
-                startDate,
-                phone,
-                status,
-                notes
-            }
-        ];
-
-        this.handleCloseAddEmployee();
+        return {
+            id: `${Date.now()}`,
+            fullName,
+            email,
+            roleTitle,
+            department,
+            startDate,
+            phone,
+            status,
+            notes
+        };
     }
 }

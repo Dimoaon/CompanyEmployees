@@ -2,14 +2,14 @@
     <div class="company-employees">
         <div class="header">
             <div class="heading">{heading}</div>
-            <div class="description">Employee list</div>
+            <div class="description">{description}</div>
         </div>
 
         <template lwc:if={isAddEmployeeOpen}>
             <div class="employee-form">
                 <div class="employee-form__grid">
                     <div class="employee-form__field">
-                        <div class="employee-form__label">Full name</div>
+                        <div class="employee-form__label">{fullNameLabel}</div>
                         <input
                             class="employee-form__input"
                             type="text"
@@ -20,7 +20,7 @@
                     </div>
 
                     <div class="employee-form__field">
-                        <div class="employee-form__label">Email</div>
+                        <div class="employee-form__label">{emailLabel}</div>
                         <input
                             class="employee-form__input"
                             type="email"
@@ -31,7 +31,7 @@
                     </div>
 
                     <div class="employee-form__field">
-                        <div class="employee-form__label">Role Title</div>
+                        <div class="employee-form__label">{roleTitleLabel}</div>
                         <input
                             class="employee-form__input"
                             type="text"
@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="employee-form__field">
-                        <div class="employee-form__label">Department</div>
+                        <div class="employee-form__label">{departmentLabel}</div>
                         <input
                             class="employee-form__input"
                             type="text"
@@ -53,7 +53,7 @@
                     </div>
 
                     <div class="employee-form__field">
-                        <div class="employee-form__label">Start Date</div>
+                        <div class="employee-form__label">{startDateLabel}</div>
                         <input
                             class="employee-form__input"
                             type="date"
@@ -64,7 +64,7 @@
                     </div>
 
                     <div class="employee-form__field">
-                        <div class="employee-form__label">Phone</div>
+                        <div class="employee-form__label">{phoneLabel}</div>
                         <input
                             class="employee-form__input"
                             type="text"
@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="employee-form__field">
-                        <div class="employee-form__label">Status</div>
+                        <div class="employee-form__label">{statusLabel}</div>
                         <input
                             class="employee-form__input"
                             type="text"
@@ -86,7 +86,7 @@
                     </div>
 
                     <div class="employee-form__field employee-form__field--full">
-                        <div class="employee-form__label">Notes</div>
+                        <div class="employee-form__label">{notesLabel}</div>
                         <textarea
                             class="employee-form__input employee-form__textarea"
                             name="notes"
@@ -100,10 +100,10 @@
                         class="employee-form__button employee-form__button--ghost"
                         onclick={handleCloseAddEmployee}
                     >
-                        Cancel
+                        {cancelButtonLabel}
                     </div>
                     <div class="employee-form__button" onclick={handleAddEmployee}>
-                        Save
+                        {saveButtonLabel}
                     </div>
                 </div>
             </div>
@@ -112,73 +112,67 @@
         <template lwc:else>
             <div class="company-section">
                 <div class="company-section__header">
-                    <div class="company-section__title">Company</div>
-                    <div class="company-section__description">
-                        Base company block for State A / State B.
-                    </div>
+                    <div class="company-section__title">{companySectionTitle}</div>
+                    <div class="company-section__description">{companySectionDescription}</div>
                 </div>
 
                 <div class="company-grid">
                     <div class="company-field">
-                        <div class="company-field__label">Company name</div>
-                        <div class="company-field__value">Acme Corporation</div>
+                        <div class="company-field__label">{companyNameLabel}</div>
+                        <div class="company-field__value">{companyNameValue}</div>
                     </div>
 
                     <div class="company-field">
-                        <div class="company-field__label">Industry</div>
-                        <div class="company-field__value">Technology</div>
+                        <div class="company-field__label">{industryLabel}</div>
+                        <div class="company-field__value">{industryValue}</div>
                     </div>
 
                     <div class="company-field">
-                        <div class="company-field__label">HQ / Location</div>
-                        <div class="company-field__value">Warsaw, Poland</div>
+                        <div class="company-field__label">{hqLocationLabel}</div>
+                        <div class="company-field__value">{hqLocationValue}</div>
                     </div>
 
                     <div class="company-field">
-                        <div class="company-field__label">Employee count</div>
+                        <div class="company-field__label">{employeeCountLabel}</div>
                         <div class="company-field__value">{employeeCount}</div>
                     </div>
 
                     <div class="company-field">
-                        <div class="company-field__label">Website</div>
-                        <div class="company-field__value">www.acme.com</div>
+                        <div class="company-field__label">{websiteLabel}</div>
+                        <div class="company-field__value">{websiteValue}</div>
                     </div>
 
                     <div class="company-field">
-                        <div class="company-field__label">Tax ID / VAT ID</div>
-                        <div class="company-field__value">PL1234567890</div>
+                        <div class="company-field__label">{taxIdLabel}</div>
+                        <div class="company-field__value">{taxIdValue}</div>
                     </div>
 
                     <div class="company-field">
-                        <div class="company-field__label">Account manager</div>
-                        <div class="company-field__value">Jane Smith</div>
+                        <div class="company-field__label">{accountManagerLabel}</div>
+                        <div class="company-field__value">{accountManagerValue}</div>
                     </div>
 
                     <div class="company-field">
-                        <div class="company-field__label">Company phone</div>
-                        <div class="company-field__value">+48 123 456 789</div>
+                        <div class="company-field__label">{companyPhoneLabel}</div>
+                        <div class="company-field__value">{companyPhoneValue}</div>
                     </div>
 
                     <div class="company-field">
-                        <div class="company-field__label">Billing address</div>
-                        <div class="company-field__value">
-                            10 Main Street, Warsaw, 00-001, Poland
-                        </div>
+                        <div class="company-field__label">{billingAddressLabel}</div>
+                        <div class="company-field__value">{billingAddressValue}</div>
                     </div>
 
                     <div class="company-field">
-                        <div class="company-field__label">Shipping address</div>
-                        <div class="company-field__value">
-                            10 Main Street, Warsaw, 00-001, Poland
-                        </div>
+                        <div class="company-field__label">{shippingAddressLabel}</div>
+                        <div class="company-field__value">{shippingAddressValue}</div>
                     </div>
                 </div>
             </div>
 
             <div class="employees-toolbar">
-                <div class="employees-toolbar__title">Employees</div>
+                <div class="employees-toolbar__title">{employeesSectionTitle}</div>
                 <div class="employees-toolbar__button" onclick={handleOpenAddEmployee}>
-                    Add employee
+                    {addEmployeeButtonLabel}
                 </div>
             </div>
 
@@ -204,7 +198,7 @@
 
             <template lwc:else>
                 <div class="empty-state">
-                    <div class="empty-state-message">No employees yet</div>
+                    <div class="empty-state-message">{emptyStateTitle}</div>
                 </div>
             </template>
         </template>

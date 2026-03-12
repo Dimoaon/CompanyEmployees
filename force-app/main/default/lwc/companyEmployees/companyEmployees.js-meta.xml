@@ -11,8 +11,46 @@
         <target>lightningCommunity__Default</target>
     </targets>
     <targetConfigs>
-        <targetConfig targets="lightningCommunity__Default">
+        <targetConfig targets="lightning__AppPage,lightning__HomePage,lightning__RecordPage,lightningCommunity__Default">
             <property name="heading" type="String" label="Heading" default="Company Employees"/>
+            <property name="description" type="String" label="Description" default="Employee list"/>
+
+            <property name="companySectionTitle" type="String" label="Company Section Title" default="Company"/>
+            <property name="companySectionDescription" type="String" label="Company Section Description" default="Company Block"/>
+            <property name="companyNameLabel" type="String" label="Company Name Label" default="Company name"/>
+            <property name="companyNameValue" type="String" label="Company Name Value" default="Acme Corporation"/>
+            <property name="industryLabel" type="String" label="Industry Label" default="Industry"/>
+            <property name="industryValue" type="String" label="Industry Value" default="Technology"/>
+            <property name="hqLocationLabel" type="String" label="HQ / Location Label" default="HQ / Location"/>
+            <property name="hqLocationValue" type="String" label="HQ / Location Value" default="Warsaw, Poland"/>
+            <property name="employeeCountLabel" type="String" label="Employee Count Label" default="Employee count"/>
+            <property name="websiteLabel" type="String" label="Website Label" default="Website"/>
+            <property name="websiteValue" type="String" label="Website Value" default="www.acme.com"/>
+            <property name="taxIdLabel" type="String" label="Tax ID / VAT ID Label" default="Tax ID / VAT ID"/>
+            <property name="taxIdValue" type="String" label="Tax ID / VAT ID Value" default="PL1234567890"/>
+            <property name="accountManagerLabel" type="String" label="Account Manager Label" default="Account manager"/>
+            <property name="accountManagerValue" type="String" label="Account Manager Value" default="Jane Smith"/>
+            <property name="companyPhoneLabel" type="String" label="Company Phone Label" default="Company phone"/>
+            <property name="companyPhoneValue" type="String" label="Company Phone Value" default="+48 123 456 789"/>
+            <property name="billingAddressLabel" type="String" label="Billing Address Label" default="Billing address"/>
+            <property name="billingAddressValue" type="String" label="Billing Address Value" default="10 Main Street, Warsaw, 00-001, Poland"/>
+            <property name="shippingAddressLabel" type="String" label="Shipping Address Label" default="Shipping address"/>
+            <property name="shippingAddressValue" type="String" label="Shipping Address Value" default="10 Main Street, Warsaw, 00-001, Poland"/>
+
+            <property name="employeesSectionTitle" type="String" label="Employees Section Title" default="Employees"/>
+            <property name="addEmployeeButtonLabel" type="String" label="Add Employee Button Label" default="Add employee"/>
+            <property name="emptyStateTitle" type="String" label="Empty State Title" default="No employees yet"/>
+
+            <property name="fullNameLabel" type="String" label="Full Name Label" default="Full name"/>
+            <property name="emailLabel" type="String" label="Email Label" default="Email"/>
+            <property name="roleTitleLabel" type="String" label="Role Title Label" default="Role Title"/>
+            <property name="departmentLabel" type="String" label="Department Label" default="Department"/>
+            <property name="startDateLabel" type="String" label="Start Date Label" default="Start Date"/>
+            <property name="phoneLabel" type="String" label="Phone Label" default="Phone"/>
+            <property name="statusLabel" type="String" label="Status Label" default="Status"/>
+            <property name="notesLabel" type="String" label="Notes Label" default="Notes"/>
+            <property name="cancelButtonLabel" type="String" label="Cancel Button Label" default="Cancel"/>
+            <property name="saveButtonLabel" type="String" label="Save Button Label" default="Save"/>
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>
