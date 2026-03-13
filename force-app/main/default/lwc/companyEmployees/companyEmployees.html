@@ -9,102 +9,112 @@
             <div class="employee-form">
                 <div class="employee-form__grid">
                     <div class="employee-form__field">
-                        <div class="employee-form__label">{fullNameLabel}</div>
-                        <input
-                            class="employee-form__input"
+                        <lightning-input
                             type="text"
+                            label={fullNameLabel}
                             name="fullName"
                             value={employeeForm.fullName}
-                            oninput={handleEmployeeFieldChange}
-                        />
+                            required
+                            maxlength={maxLength.fullName}
+                            onchange={handleEmployeeFieldChange}
+                        ></lightning-input>
                     </div>
 
                     <div class="employee-form__field">
-                        <div class="employee-form__label">{emailLabel}</div>
-                        <input
-                            class="employee-form__input"
+                        <lightning-input
                             type="email"
+                            label={emailLabel}
                             name="email"
                             value={employeeForm.email}
-                            oninput={handleEmployeeFieldChange}
-                        />
+                            required
+                            maxlength={maxLength.email}
+                            onchange={handleEmployeeFieldChange}
+                        ></lightning-input>
                     </div>
 
                     <div class="employee-form__field">
-                        <div class="employee-form__label">{roleTitleLabel}</div>
-                        <input
-                            class="employee-form__input"
+                        <lightning-input
                             type="text"
+                            label={roleTitleLabel}
                             name="roleTitle"
                             value={employeeForm.roleTitle}
-                            oninput={handleEmployeeFieldChange}
-                        />
+                            required
+                            maxlength={maxLength.roleTitle}
+                            onchange={handleEmployeeFieldChange}
+                        ></lightning-input>
                     </div>
 
                     <div class="employee-form__field">
-                        <div class="employee-form__label">{departmentLabel}</div>
-                        <input
-                            class="employee-form__input"
+                        <lightning-input
                             type="text"
+                            label={departmentLabel}
                             name="department"
                             value={employeeForm.department}
-                            oninput={handleEmployeeFieldChange}
-                        />
+                            required
+                            maxlength={maxLength.department}
+                            onchange={handleEmployeeFieldChange}
+                        ></lightning-input>
                     </div>
 
                     <div class="employee-form__field">
-                        <div class="employee-form__label">{startDateLabel}</div>
-                        <input
-                            class="employee-form__input"
+                        <lightning-input
                             type="date"
+                            label={startDateLabel}
                             name="startDate"
                             value={employeeForm.startDate}
-                            oninput={handleEmployeeFieldChange}
-                        />
+                            required
+                            max={maxStartDate}
+                            onchange={handleEmployeeFieldChange}
+                        ></lightning-input>
                     </div>
 
                     <div class="employee-form__field">
-                        <div class="employee-form__label">{phoneLabel}</div>
-                        <input
-                            class="employee-form__input"
-                            type="text"
+                        <lightning-input
+                            type="tel"
+                            label={phoneLabel}
                             name="phone"
                             value={employeeForm.phone}
-                            oninput={handleEmployeeFieldChange}
-                        />
+                            required
+                            maxlength={maxLength.phone}
+                            onchange={handleEmployeeFieldChange}
+                        ></lightning-input>
                     </div>
 
                     <div class="employee-form__field">
-                        <div class="employee-form__label">{statusLabel}</div>
-                        <input
-                            class="employee-form__input"
+                        <lightning-input
                             type="text"
+                            label={statusLabel}
                             name="status"
                             value={employeeForm.status}
-                            oninput={handleEmployeeFieldChange}
-                        />
+                            required
+                            maxlength={maxLength.status}
+                            onchange={handleEmployeeFieldChange}
+                        ></lightning-input>
                     </div>
 
                     <div class="employee-form__field employee-form__field--full">
-                        <div class="employee-form__label">{notesLabel}</div>
-                        <textarea
-                            class="employee-form__input employee-form__textarea"
+                        <lightning-textarea
+                            label={notesLabel}
                             name="notes"
-                            oninput={handleEmployeeFieldChange}
-                        >{employeeForm.notes}</textarea>
+                            value={employeeForm.notes}
+                            maxlength={maxLength.notes}
+                            onchange={handleEmployeeFieldChange}
+                        ></lightning-textarea>
                     </div>
                 </div>
 
                 <div class="employee-form__actions">
-                    <div
-                        class="employee-form__button employee-form__button--ghost"
+                    <lightning-button
+                        label={cancelButtonLabel}
+                        variant="neutral"
                         onclick={handleCloseAddEmployee}
-                    >
-                        {cancelButtonLabel}
-                    </div>
-                    <div class="employee-form__button" onclick={handleAddEmployee}>
-                        {saveButtonLabel}
-                    </div>
+                    ></lightning-button>
+                    <lightning-button
+                        label={saveButtonLabel}
+                        variant="brand"
+                        onclick={handleAddEmployee}
+                        disabled={isSaveDisabled}
+                    ></lightning-button>
                 </div>
             </div>
         </template>
@@ -117,90 +127,103 @@
                 </div>
 
                 <div class="company-grid">
-                    <div class="company-field">
-                        <div class="company-field__label">{companyNameLabel}</div>
-                        <div class="company-field__value">{companyNameValue}</div>
-                    </div>
-
-                    <div class="company-field">
-                        <div class="company-field__label">{industryLabel}</div>
-                        <div class="company-field__value">{industryValue}</div>
-                    </div>
-
-                    <div class="company-field">
-                        <div class="company-field__label">{hqLocationLabel}</div>
-                        <div class="company-field__value">{hqLocationValue}</div>
-                    </div>
-
-                    <div class="company-field">
-                        <div class="company-field__label">{employeeCountLabel}</div>
-                        <div class="company-field__value">{employeeCount}</div>
-                    </div>
-
-                    <div class="company-field">
-                        <div class="company-field__label">{websiteLabel}</div>
-                        <div class="company-field__value">{websiteValue}</div>
-                    </div>
-
-                    <div class="company-field">
-                        <div class="company-field__label">{taxIdLabel}</div>
-                        <div class="company-field__value">{taxIdValue}</div>
-                    </div>
-
-                    <div class="company-field">
-                        <div class="company-field__label">{accountManagerLabel}</div>
-                        <div class="company-field__value">{accountManagerValue}</div>
-                    </div>
-
-                    <div class="company-field">
-                        <div class="company-field__label">{companyPhoneLabel}</div>
-                        <div class="company-field__value">{companyPhoneValue}</div>
-                    </div>
-
-                    <div class="company-field">
-                        <div class="company-field__label">{billingAddressLabel}</div>
-                        <div class="company-field__value">{billingAddressValue}</div>
-                    </div>
-
-                    <div class="company-field">
-                        <div class="company-field__label">{shippingAddressLabel}</div>
-                        <div class="company-field__value">{shippingAddressValue}</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="employees-toolbar">
-                <div class="employees-toolbar__title">{employeesSectionTitle}</div>
-                <div class="employees-toolbar__button" onclick={handleOpenAddEmployee}>
-                    {addEmployeeButtonLabel}
-                </div>
-            </div>
-
-            <template lwc:if={hasEmployees}>
-                <div class="list">
-                    <template for:each={employees} for:item="employee">
-                        <div key={employee.id} class="card">
-                            <div class="employee-name">{employee.fullName}</div>
-                            <div class="employee-position">{employee.roleTitle}</div>
-                            <div class="employee-meta">{employee.department}</div>
-                            <div class="employee-meta">{employee.email}</div>
-                            <div class="employee-meta">{employee.phone}</div>
-                            <div class="employee-meta">
-                                {employee.status} • {employee.startDate}
-                            </div>
-                            <template lwc:if={employee.notes}>
-                                <div class="employee-notes">{employee.notes}</div>
-                            </template>
+                    <template for:each={companyFields} for:item="field">
+                        <div key={field.id} class="company-field">
+                            <div class="company-field__label">{field.label}</div>
+                            <div class="company-field__value">{field.value}</div>
                         </div>
                     </template>
                 </div>
-            </template>
+            </div>
 
-            <template lwc:else>
-                <div class="empty-state">
-                    <div class="empty-state-message">{emptyStateTitle}</div>
+            <div class="employees-card slds-card">
+                <div class="employees-card__header slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+                    <div class="employees-toolbar__title">{employeesSectionTitle}</div>
+                    <lightning-button
+                        label={addEmployeeButtonLabel}
+                        variant="brand"
+                        onclick={handleOpenAddEmployee}
+                    ></lightning-button>
                 </div>
-            </template>
+
+                <template lwc:if={hasEmployees}>
+                    <div class="employees-table slds-scrollable_x">
+                        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-table_fixed-layout">
+                            <thead>
+                                <tr class="slds-line-height_reset">
+                                    <th scope="col">
+                                        <div class="slds-truncate" title={fullNameLabel}>{fullNameLabel}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title={roleTitleLabel}>{roleTitleLabel}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title={departmentLabel}>{departmentLabel}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title={emailLabel}>{emailLabel}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title={phoneLabel}>{phoneLabel}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title={statusLabel}>{statusLabel}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title={notesLabel}>{notesLabel}</div>
+                                    </th>
+                                    <th scope="col" class="employees-table__actions">
+                                        <div title="Actions">Actions</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each={employees} for:item="employee">
+                                    <tr key={employee.id}>
+                                        <th scope="row">
+                                            <div class="slds-truncate" title={employee.fullName}>{employee.fullName}</div>
+                                        </th>
+                                        <td>
+                                            <div class="slds-truncate" title={employee.roleTitle}>{employee.roleTitle}</div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate" title={employee.department}>{employee.department}</div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate" title={employee.email}>{employee.email}</div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate" title={employee.phone}>{employee.phone}</div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate" title={employee.status}>{employee.status}</div>
+                                        </td>
+                                        <td>
+                                            <div class="employees-table__notes slds-truncate" title={employee.notes}>{employee.notes}</div>
+                                        </td>
+                                        <td class="employees-table__actions">
+                                            <lightning-button-icon
+                                                icon-name="utility:delete"
+                                                alternative-text="Delete"
+                                                title="Delete"
+                                                variant="border-filled"
+                                                data-id={employee.id}
+                                                onclick={handleDeleteEmployee}
+                                            ></lightning-button-icon>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+                </template>
+
+                <template lwc:else>
+                    <div class="empty-state">
+                        <div class="empty-state-message">{emptyStateTitle}</div>
+                    </div>
+                </template>
+            </div>
         </template>
     </div>
 </template>

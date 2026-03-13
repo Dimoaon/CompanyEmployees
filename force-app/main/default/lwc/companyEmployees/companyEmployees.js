@@ -1,4 +1,17 @@
-import { api, LightningElement } from 'lwc';
+import Toast from 'lightning/toast';
+import { LightningElement, api, track } from 'lwc';
+
+const MAX_LENGTHS = {
+    fullName: 80,
+    email: 80,
+    roleTitle: 60,
+    department: 60,
+    phone: 20,
+    status: 20,
+    notes: 240
+};
+
+const PHONE_PATTERN = /^[+\s\-()0-9]+$/;
 
 export default class CompanyEmployees extends LightningElement {
     // VARIABLES
@@ -41,10 +54,14 @@ export default class CompanyEmployees extends LightningElement {
     @api phoneLabel = null;
     @api statusLabel = null;
     @api notesLabel = null;
+    @api successToastTitle = null;
+    @api successToastMessage = null;
 
-    employees = [];
-    isAddEmployeeOpen = false;
-    employeeForm = {
+    maxLength = MAX_LENGTHS;
+
+    @track employees = [];
+    @track isAddEmployeeOpen = false;
+    @track employeeForm = {
         fullName: '',
         email: '',
         roleTitle: '',
@@ -64,21 +81,84 @@ export default class CompanyEmployees extends LightningElement {
         return this.employees.length > 0;
     }
 
+    get maxStartDate() {
+        return new Date().toISOString().split('T')[0];
+    }
+
+    get companyFields() {
+        return [
+            {
+                id: 'companyName',
+                label: this.companyNameLabel,
+                value: this.companyNameValue
+            },
+            {
+                id: 'industry',
+                label: this.industryLabel,
+                value: this.industryValue
+            },
+            {
+                id: 'hqLocation',
+                label: this.hqLocationLabel,
+                value: this.hqLocationValue
+            },
+            {
+                id: 'employeeCount',
+                label: this.employeeCountLabel,
+                value: this.employeeCount
+            },
+            {
+                id: 'website',
+                label: this.websiteLabel,
+                value: this.websiteValue
+            },
+            {
+                id: 'taxId',
+                label: this.taxIdLabel,
+                value: this.taxIdValue
+            },
+            {
+                id: 'accountManager',
+                label: this.accountManagerLabel,
+                value: this.accountManagerValue
+            },
+            {
+                id: 'companyPhone',
+                label: this.companyPhoneLabel,
+                value: this.companyPhoneValue
+            },
+            {
+                id: 'billingAddress',
+                label: this.billingAddressLabel,
+                value: this.billingAddressValue
+            },
+            {
+                id: 'shippingAddress',
+                label: this.shippingAddressLabel,
+                value: this.shippingAddressValue
+            }
+        ];
+    }
+
+    get isSaveDisabled() {
+        return !this.hasRequiredFields;
+    }
+
+    get hasRequiredFields() {
+        return (
+            this.employeeForm.fullName.trim() &&
+            this.employeeForm.email.trim() &&
+            this.employeeForm.roleTitle.trim() &&
+            this.employeeForm.department.trim() &&
+            this.employeeForm.startDate.trim() &&
+            this.employeeForm.phone.trim() &&
+            this.employeeForm.status.trim()
+        );
+    }
+
     // LIFECYCLES
 
     // INIT METHODS
-    resetEmployeeForm() {
-        this.employeeForm = {
-            fullName: '',
-            email: '',
-            roleTitle: '',
-            department: '',
-            startDate: '',
-            phone: '',
-            status: '',
-            notes: ''
-        };
-    }
 
     // HANDLERS
     handleOpenAddEmployee() {
@@ -97,9 +177,16 @@ export default class CompanyEmployees extends LightningElement {
             ...this.employeeForm,
             [name]: value
         };
+
+        this.applyFieldValidity(event.target);
+        event.target.reportValidity();
     }
 
     handleAddEmployee() {
+        if (!this.validateForm()) {
+            return;
+        }
+
         const employee = this.buildEmployee();
 
         if (!employee) {
@@ -107,10 +194,41 @@ export default class CompanyEmployees extends LightningElement {
         }
 
         this.employees = [...this.employees, employee];
+        this.showSuccessToast();
         this.handleCloseAddEmployee();
     }
 
+    handleDeleteEmployee(event) {
+        const employeeId = event.currentTarget.dataset.id;
+
+        this.employees = this.employees.filter((employee) => employee.id !== employeeId);
+    }
+
     // MAIN METHODS
+    validateForm() {
+        const fields = this.template.querySelectorAll('lightning-input, lightning-textarea');
+
+        return [...fields].every((field) => {
+            this.applyFieldValidity(field);
+            field.reportValidity();
+            return field.checkValidity();
+        });
+    }
+
+    applyFieldValidity(field) {
+        if (field.name !== 'phone') {
+            field.setCustomValidity('');
+            return;
+        }
+
+        const phoneValue = field.value ? field.value.trim() : '';
+        const isPhoneValid = !phoneValue || PHONE_PATTERN.test(phoneValue);
+
+        field.setCustomValidity(
+            isPhoneValid ? '' : 'Phone can contain only +, spaces, -, (), and digits.'
+        );
+    }
+
     buildEmployee() {
         const fullName = this.employeeForm.fullName.trim();
         const email = this.employeeForm.email.trim();
@@ -136,5 +254,29 @@ export default class CompanyEmployees extends LightningElement {
             status,
             notes
         };
+    }
+
+    resetEmployeeForm() {
+        this.employeeForm = {
+            fullName: '',
+            email: '',
+            roleTitle: '',
+            department: '',
+            startDate: '',
+            phone: '',
+            status: '',
+            notes: ''
+        };
+    }
+
+    showSuccessToast() {
+        Toast.show(
+            {
+                label: this.successToastTitle,
+                message: this.successToastMessage,
+                variant: 'success'
+            },
+            this
+        );
     }
 }

@@ -66,31 +66,20 @@
     font-size: 1.5rem;
 }
 
-.employees-toolbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
-
 .employees-toolbar__title {
     font-size: 1.25rem;
     font-weight: 700;
     color: #111827;
 }
 
-.employees-toolbar__button,
-.employee-form__button {
-    min-height: 2.5rem;
-    padding: 0.65rem 1rem;
-    border: 1px solid #2563eb;
-    border-radius: 0.65rem;
-    background: #2563eb;
-    color: #ffffff;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
+.employees-card {
+    overflow: hidden;
+    border-radius: 0.75rem;
+}
+
+.employees-card__header {
+    padding: 1rem;
+    border-bottom: 1px solid #d8dde6;
 }
 
 .employee-form {
@@ -113,32 +102,18 @@
     gap: 0.35rem;
 }
 
+
+/* TODO */
+.slds-input {
+    min-height: 3rem !important;
+}
+
+.slds-textarea {
+    min-height: 8rem !important;
+}
+
 .employee-form__field--full {
     grid-column: 1 / -1;
-}
-
-.employee-form__label {
-    color: #6b7280;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-}
-
-.employee-form__input {
-    min-height: 2.75rem;
-    padding: 0 0.85rem;
-    border: 1px solid #d1d5db;
-    border-radius: 0.65rem;
-    background: #ffffff;
-    color: #111827;
-    font-size: 1rem;
-}
-
-.employee-form__textarea {
-    min-height: 7rem;
-    padding: 0.85rem;
-    resize: vertical;
 }
 
 .employee-form__actions {
@@ -148,25 +123,12 @@
     margin-top: 1rem;
 }
 
-.employee-form__button--ghost {
-    border-color: #d1d5db;
-    background: #ffffff;
-    color: #111827;
-}
-
 .description,
-.empty-state-message,
-.employee-position {
+.empty-state-message {
     margin: 0;
     color: #5c6b7a;
 }
 
-.list {
-    display: grid;
-    gap: 0.75rem;
-}
-
-.card,
 .empty-state {
     padding: 1rem;
     border: 1px solid #e5e5e5;
@@ -174,23 +136,19 @@
     background: #fafafa;
 }
 
-.employee-name {
-    margin: 0 0 0.25rem;
-    font-size: 1rem;
+.employees-table {
+    background: #ffffff;
 }
 
-.employee-meta {
-    margin-top: 0.35rem;
-    color: #5c6b7a;
-    font-size: 0.95rem;
+.employees-table__notes {
+    max-width: 16rem;
 }
 
-.employee-notes {
-    margin-top: 0.5rem;
-    padding-top: 0.5rem;
-    border-top: 1px solid #e5e7eb;
-    color: #374151;
-    font-size: 0.95rem;
+.employees-table__actions {
+    width: 6.5rem;
+    min-width: 6.5rem;
+    text-align: center;
+    white-space: nowrap;
 }
 
 /* TABLET */
@@ -208,8 +166,9 @@
 /* MOBILE */
 
 @media (max-width: 767.98px) {
-    .employees-toolbar {
+    .employees-card__header {
         align-items: stretch;
+        gap: 0.75rem;
         flex-direction: column;
     }
 
