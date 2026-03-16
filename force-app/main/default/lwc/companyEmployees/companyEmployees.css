@@ -1,7 +1,9 @@
 .company-employees {
     padding: 1rem;
+
     border: 1px solid #d8dde6;
     border-radius: 0.75rem;
+
     background: #ffffff;
 }
 
@@ -12,8 +14,10 @@
 .company-section {
     margin-bottom: 1rem;
     padding: 1rem;
+
     border: 1px solid #e5e7eb;
     border-radius: 0.75rem;
+
     background: #fafafa;
 }
 
@@ -23,6 +27,7 @@
 
 .company-section__title {
     margin: 0 0 0.35rem;
+
     font-size: 1.25rem;
     font-weight: 700;
     color: #111827;
@@ -36,18 +41,22 @@
 .company-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    
     gap: 0.75rem;
 }
 
 .company-field {
     padding: 0.9rem 1rem;
+
     border: 1px solid #e5e7eb;
     border-radius: 0.65rem;
+
     background: #ffffff;
 }
 
 .company-field__label {
     margin-bottom: 0.35rem;
+
     color: #6b7280;
     font-size: 0.75rem;
     font-weight: 700;
@@ -85,20 +94,24 @@
 .employee-form {
     margin-bottom: 1rem;
     padding: 1rem;
+
     border: 1px solid #dbe3f0;
     border-radius: 0.75rem;
+
     background: #f8fbff;
 }
 
 .employee-form__grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    
     gap: 0.75rem;
 }
 
 .employee-form__field {
     display: flex;
     flex-direction: column;
+    
     gap: 0.35rem;
 }
 
@@ -109,6 +122,7 @@
 .employee-form__actions {
     display: flex;
     justify-content: flex-end;
+
     gap: 0.75rem;
     margin-top: 1rem;
 }
@@ -121,13 +135,16 @@
 
 .empty-state {
     padding: 1rem;
+
     border: 1px solid #e5e5e5;
     border-radius: 0.5rem;
+
     background: #fafafa;
 }
 
 .employees-table {
     background: #ffffff;
+    
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 }
@@ -143,6 +160,7 @@
 .employees-table__actions {
     width: 6.5rem;
     min-width: 6.5rem;
+    
     text-align: center;
     white-space: nowrap;
 }
@@ -164,8 +182,9 @@
 @media (max-width: 767.98px) {
     .employees-card__header {
         align-items: stretch;
-        gap: 0.75rem;
         flex-direction: column;
+        
+        gap: 0.75rem;
     }
 
     .company-grid {
