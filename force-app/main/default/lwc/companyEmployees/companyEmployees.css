@@ -240,8 +240,7 @@
     .employees-table .slds-max-medium-table_stacked-horizontal tbody td::before {
         float: left;
         display: block;
-        width: 5.75rem;
-        min-width: 5.75rem;
+        min-width: 6.5rem;
         margin: 0;
         padding-right: 0.75rem;
         text-align: left;
@@ -262,7 +261,7 @@
     .employees-table .slds-max-medium-table_stacked-horizontal tbody .employees-table__empty-row > td:last-child {
         display: flex;
         justify-content: center;
-        
+
         text-align: center;
     }
 
