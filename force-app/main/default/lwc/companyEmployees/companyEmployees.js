@@ -220,8 +220,8 @@ export default class CompanyEmployees extends LightningElement {
     }
 
     handleEditEmployee(event) {
-        const employeeId = event.currentTarget.dataset.id;
-        const employee = this.employees.find((item) => item.id === employeeId);
+        let employeeId = event.currentTarget.dataset.id;
+        let employee = this.employees.find((item) => item.id === employeeId);
 
         if (!employee) {
             return;
