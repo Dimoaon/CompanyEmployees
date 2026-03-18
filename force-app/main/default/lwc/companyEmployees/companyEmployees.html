@@ -205,22 +205,39 @@
                                         </td>
                                         <td data-label={labels.actionsTitle} class="employees-table__actions">
                                             <div class="action__wrapper">
-                                                <lightning-button-icon
-                                                icon-name="utility:edit"
-                                                alternative-text={labels.editActionTitle}
-                                                title={labels.editActionTitle}
-                                                variant="border-filled"
-                                                data-id={employee.id}
-                                                onclick={handleEditEmployee}
-                                            ></lightning-button-icon>
-                                            <lightning-button-icon
-                                                icon-name="utility:delete"
-                                                alternative-text={labels.deleteActionTitle}
-                                                title={labels.deleteActionTitle}
-                                                variant="border-filled"
-                                                data-id={employee.id}
-                                                onclick={handleDeleteEmployee}
-                                            ></lightning-button-icon>
+                                                <div class="action__icon-buttons">
+                                                    <lightning-button-icon
+                                                        icon-name="utility:edit"
+                                                        alternative-text={labels.editActionTitle}
+                                                        title={labels.editActionTitle}
+                                                        variant="border-filled"
+                                                        data-id={employee.id}
+                                                        onclick={handleEditEmployee}
+                                                    ></lightning-button-icon>
+                                                    <lightning-button-icon
+                                                        icon-name="utility:delete"
+                                                        alternative-text={labels.deleteActionTitle}
+                                                        title={labels.deleteActionTitle}
+                                                        variant="border-filled"
+                                                        data-id={employee.id}
+                                                        onclick={handleDeleteEmployee}
+                                                    ></lightning-button-icon>
+                                                </div>
+
+                                                <div class="action__text-buttons">
+                                                    <lightning-button
+                                                        label={labels.editActionTitle}
+                                                        variant="neutral"
+                                                        data-id={employee.id}
+                                                        onclick={handleEditEmployee}
+                                                    ></lightning-button>
+                                                    <lightning-button
+                                                        label={labels.deleteActionTitle}
+                                                        variant="destructive-text"
+                                                        data-id={employee.id}
+                                                        onclick={handleDeleteEmployee}
+                                                    ></lightning-button>
+                                                </div>
                                             </div>
                                         </td>
                                     </tr>

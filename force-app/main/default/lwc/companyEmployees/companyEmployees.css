@@ -206,6 +206,20 @@
     margin-left: 0.35rem;
 }
 
+.action__wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.action__icon-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.action__text-buttons {
+    display: none;
+}
+
 @media (max-width: 767.98px) {
     .employees-table .slds-max-medium-table_stacked-horizontal {
         border-top: 0;
@@ -305,6 +319,17 @@
 
     .employees-table .slds-max-medium-table_stacked-horizontal tbody tr > td:last-child lightning-button-icon + lightning-button-icon {
         margin-left: 0.35rem;
+    }
+
+    .action__icon-buttons {
+        display: none;
+    }
+
+    .action__text-buttons {
+        display: flex;
+        justify-content: flex-end;
+
+        gap: 0.5rem;
     }
 
     .employees-table__actions {
