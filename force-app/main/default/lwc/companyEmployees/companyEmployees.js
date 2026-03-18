@@ -277,7 +277,7 @@ export default class CompanyEmployees extends LightningElement {
 
     // INIT METHODS
     addCustomCssStyles() {
-        let customCssContainer = this.template.querySelector('.company-employees__custom-css-container');
+        let customCssContainer = this.template.querySelector('.custom-css-container');
 
         if (!customCssContainer || customCssContainer.childElementCount > 0) {
             return;
