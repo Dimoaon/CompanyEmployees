@@ -13,7 +13,6 @@
 .company-employees__wrapper {
     padding: 1rem;
 
-    border: 1px solid var(--company-employees-color-border-base);
     border-radius: 0.75rem;
 
     background: var(--company-employees-color-surface);
@@ -38,7 +37,6 @@
     margin-bottom: 1rem;
     padding: 1rem;
 
-    border: 1px solid var(--company-employees-color-border-soft);
     border-radius: 0.75rem;
 
     background: var(--company-employees-color-surface-muted);
