@@ -94,6 +94,8 @@ export default class CompanyEmployees extends LightningElement {
     @api addSuccessToastMessage = null;
     @api editSuccessToastTitle = null;
     @api editSuccessToastMessage = null;
+    @api deleteSuccessToastTitle = null;
+    @api deleteSuccessToastMessage = null;
 
     maxLength = MAX_LENGTHS;
     labels = LABELS;
@@ -260,7 +262,7 @@ export default class CompanyEmployees extends LightningElement {
             : [...this.employees, employee];
 
         this.syncEmployeeTableRows();
-        this.showSuccessToast(isEditing);
+        this.showSuccessToast(isEditing ? 'edit' : 'add');
         this.handleCloseAddEmployee();
     }
 
@@ -269,6 +271,7 @@ export default class CompanyEmployees extends LightningElement {
 
         this.employees = this.employees.filter((employee) => employee.id !== employeeId);
         this.syncEmployeeTableRows();
+        this.showSuccessToast('delete');
     }
 
     // MAIN METHODS
@@ -382,11 +385,26 @@ export default class CompanyEmployees extends LightningElement {
         };
     }
 
-    showSuccessToast(isEditing) {
+    showSuccessToast(action) {
+        let successToastConfig = {
+            add: {
+                label: this.addSuccessToastTitle,
+                message: this.addSuccessToastMessage
+            },
+            edit: {
+                label: this.editSuccessToastTitle,
+                message: this.editSuccessToastMessage
+            },
+            delete: {
+                label: this.deleteSuccessToastTitle,
+                message: this.deleteSuccessToastMessage
+            }
+        };
+
         Toast.show(
             {
-                label: isEditing ? this.editSuccessToastTitle : this.addSuccessToastTitle,
-                message: isEditing ? this.editSuccessToastMessage : this.addSuccessToastMessage,
+                label: successToastConfig[action].label,
+                message: successToastConfig[action].message,
                 variant: 'success'
             },
             this

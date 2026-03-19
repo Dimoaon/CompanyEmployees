@@ -55,6 +55,8 @@
             <property name="addSuccessToastMessage" type="String" label="Add Success Toast Message" default="Employee was added successfully."/>
             <property name="editSuccessToastTitle" type="String" label="Edit Success Toast Title" default="Employee updated"/>
             <property name="editSuccessToastMessage" type="String" label="Edit Success Toast Message" default="Employee was updated successfully."/>
+            <property name="deleteSuccessToastTitle" type="String" label="Delete Success Toast Title" default="Employee deleted"/>
+            <property name="deleteSuccessToastMessage" type="String" label="Delete Success Toast Message" default="Employee was deleted successfully."/>
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>
